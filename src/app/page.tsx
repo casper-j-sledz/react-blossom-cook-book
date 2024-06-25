@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
-import { ClassAnchor, FunctionAnchor } from "./anchor-component";
+import { AddNewRecipeAnchor, Anchor, IAnchor, anchors } from "./anchor-component";
 
 // TODO: 
 // ustawienia, język polski, angielski
@@ -49,41 +51,13 @@ export default function Home() {
       </div>
 
       <div className={styles.grid}>
-        <FunctionAnchor 
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          title="Docs"
-          description="Find in-depth information about Next.js features and API."/>
-        <FunctionAnchor 
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          title="Learn"
-          description="Learn about Next.js in an interactive course with&nbsp;quizzes!"/>
-        <FunctionAnchor 
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          title="Templates"
-          description="Explore starter templates for Next.js."/>
-        <FunctionAnchor 
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          title="Deploy"
-          description="Instantly deploy your Next.js site to a shareable URL with Vercel."/>
+        {anchors.map((anchor: IAnchor) => <Anchor
+          key={anchor.title}
+          {...anchor} />
+        )}
+        <AddNewRecipeAnchor />
       </div>
-      <div className={styles.grid}>
-        <ClassAnchor 
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          title="Docs"
-          description="Find in-depth information about Next.js features and API."/>
-        <ClassAnchor 
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          title="Learn"
-          description="Learn about Next.js in an interactive course with&nbsp;quizzes!"/>
-        <ClassAnchor 
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          title="Templates"
-          description="Explore starter templates for Next.js."/>
-        <ClassAnchor 
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          title="Deploy"
-          description="Instantly deploy your Next.js site to a shareable URL with Vercel."/>
-      </div>
+      {/* <DemoAnchor/> */}
     </main>
   );
 }

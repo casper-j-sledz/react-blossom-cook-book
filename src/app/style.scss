@@ -1,0 +1,34 @@
+a {
+  padding: 5%;
+  p {
+    font-size: 0.95em;
+    //text-align: justify;
+  }
+}
+a:hover {
+  width:100%;
+  height:100%;
+  background-color:rgb(224, 224, 224);
+  border-radius: 32px;
+}
+
+.image-box {
+  width: 90%;
+  height: 14em;
+  position: relative;
+  box-shadow: 4px 4px 20px 0px rgb(96, 96, 96);
+  border-radius: 10%;
+  margin-bottom: 16px;
+  img {
+    border-radius: 10%;
+  }
+  svg {
+    opacity: 0.9;
+    width: 60%;
+    height: 60%;
+    padding: 20%;
+    path {
+      fill: #000;
+    }
+  }
+}
