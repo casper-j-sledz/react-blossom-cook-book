@@ -3,7 +3,7 @@
 import mainStyles from "./page.module.scss";
 import localStyles from "./demos.module.scss";
 import Image, { StaticImageData } from "next/image";
-import { Component } from "react";
+import { Component, ReactNode } from "react";
 import { styled } from 'styled-components';
 import { ScriptProps } from "next/dist/client/script";
 import pancakeImg from "/public/pictures/pexels-ash-122861-376464.jpg"
@@ -19,8 +19,16 @@ export function StyledComponent() {
   //return <StyledDiv $visited={true}></StyledDiv>
 }
 
-export function ContentProb(props: ScriptProps) {
+export function ContentProp(props: ScriptProps) {
   return <button type="button">{props.children}</button>
+}
+
+export interface PropNode {
+  children: ReactNode,
+}
+
+export function ContentPropNode({children}: PropNode) {
+  return <button type="button">{children}</button>
 }
 
 export interface IAnchor {
@@ -97,7 +105,9 @@ export function DemoAnchor() {
         )}
       </div>
       {/* <DemoImageWithStyleModule src={pancakeImg} alt={"Pancake image"}></DemoImageWithStyleModule> */}
-      <ContentProb>Test text</ContentProb>
+      <ContentProp>ContentProp</ContentProp>
+      <ContentPropNode>ContentPropNode</ContentPropNode>
+
     </div>
     
   );
