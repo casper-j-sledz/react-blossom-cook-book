@@ -1,11 +1,12 @@
 "use client";
 
 import styles from "./page.module.scss";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import './anchor-component.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faBowlFood} from "@fortawesome/free-solid-svg-icons";
 //import { faBowlFood } from "@fortawesome/free-regular-svg-icons";
+import pancakeImg from "/public/pictures/pexels-ash-122861-376464.jpg"
 
 export interface IAnchor {
   href: string, 
@@ -15,7 +16,7 @@ export interface IAnchor {
 }
 
 export interface IImage {
-  src?: string,
+  src?: string | StaticImageData,
   alt?: string,
 }
 
@@ -25,7 +26,7 @@ export const anchors: IAnchor[] = [
     title:       "Pancake",
     description: "Juicy pancakes in caramel glaze with seasonal fruits.",
     image: { 
-      src: "/pictures/pexels-ash-122861-376464.jpg",
+      src: pancakeImg,
       alt: "Next.js Logo",
     }
   },

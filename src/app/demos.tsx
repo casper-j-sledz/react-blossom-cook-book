@@ -1,17 +1,26 @@
 "use client";
 
 import mainStyles from "./page.module.scss";
-import localStyles from "./demo-anchor.module.scss";
-import Image from "next/image";
+import localStyles from "./demos.module.scss";
+import Image, { StaticImageData } from "next/image";
 import { Component } from "react";
 import { styled } from 'styled-components';
+import { ScriptProps } from "next/dist/client/script";
+import pancakeImg from "/public/pictures/pexels-ash-122861-376464.jpg"
 
 const StyledDiv = styled.a`
   padding: 5%;
+  color: ${($visited) => $visited ? "purple" : "blue"};
 `
 
 export function StyledComponent() {
-  return <StyledDiv></StyledDiv>
+  return <StyledDiv ></StyledDiv>
+  //https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/39836036#overview
+  //return <StyledDiv $visited={true}></StyledDiv>
+}
+
+export function ContentProb(props: ScriptProps) {
+  return <button type="button">{props.children}</button>
 }
 
 export interface IAnchor {
@@ -44,7 +53,7 @@ export const anchors: IAnchor[] = [
 ];
 
 export interface IImage {
-  src: string,
+  src: string | StaticImageData,
   alt?: string,
 }
 
@@ -87,7 +96,10 @@ export function DemoAnchor() {
           description={anchor.description} />
         )}
       </div>
+      {/* <DemoImageWithStyleModule src={pancakeImg} alt={"Pancake image"}></DemoImageWithStyleModule> */}
+      <ContentProb>Test text</ContentProb>
     </div>
+    
   );
 }
 
