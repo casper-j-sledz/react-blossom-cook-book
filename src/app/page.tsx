@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import { AddNewRecipeAnchor, Anchor, IAnchor, anchors } from "./anchor-component";
 
 // TODO: 
@@ -40,14 +40,12 @@ export default function Home() {
       </div>
 
       <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+        <div className={styles.description}>
+          <p>
+            Get started by editing&nbsp;
+            <code className={styles.code}>src/app/page.tsx</code>
+          </p>
+        </div>
       </div>
 
       <div className={styles.grid}>

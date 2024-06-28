@@ -1,7 +1,18 @@
 "use client";
 
+import mainStyles from "./page.module.scss";
+import localStyles from "./demo-anchor.module.scss";
+import Image from "next/image";
 import { Component } from "react";
-import styles from "./page.module.css";
+import { styled } from 'styled-components';
+
+const StyledDiv = styled.a`
+  padding: 5%;
+`
+
+export function StyledComponent() {
+  return <StyledDiv></StyledDiv>
+}
 
 export interface IAnchor {
   href: string, 
@@ -32,16 +43,43 @@ export const anchors: IAnchor[] = [
   },
 ];
 
+export interface IImage {
+  src: string,
+  alt?: string,
+}
+
+export function DemoImageWithStyleModule(props: IImage) {
+  return (
+        <div className={localStyles.imageBox}>
+          <Image
+              className={mainStyles.logo}
+              src={props.src}
+              alt={props.alt ? props.alt : ""}
+              layout="fill"
+              priority
+            />
+        </div>
+  );
+}
+
+export function conditionStyleClass(condition: boolean) {
+  return <div className={condition ?  mainStyles.grid : undefined}></div>
+}
+
+export function multipleStyleClass(condition: boolean) {
+  return <div className={`exampleClass ${mainStyles.grid} ${condition ?  mainStyles.center : undefined}`}></div>
+}
+
 export function DemoAnchor() {
   return (
     <div>
-      <div className={styles.grid}>
+      <div className={mainStyles.grid}>
         {anchors.map((anchor: IAnchor) => <FunctionAnchor
           key={anchor.title}
           {...anchor} />
         )}
       </div>
-      <div className={styles.grid}>
+      <div className={mainStyles.grid}>
         {anchors.map((anchor: IAnchor) => <ClassAnchor
           key={anchor.title}
           href={anchor.href}
@@ -57,7 +95,7 @@ export function FunctionAnchor(props: IAnchor) {
   return (
     <a
         href={props.href}
-        className={styles.card}
+        className={mainStyles.card}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -72,7 +110,7 @@ export class ClassAnchor extends Component<IAnchor> {
     return (
       <a
           href={this.props.href}
-          className={styles.card}
+          className={mainStyles.card}
           target="_blank"
           rel="noopener noreferrer"
         >

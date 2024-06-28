@@ -1,8 +1,8 @@
 "use client";
 
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import Image from "next/image";
-import './style.scss';
+import './anchor-component.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faBowlFood} from "@fortawesome/free-solid-svg-icons";
 //import { faBowlFood } from "@fortawesome/free-regular-svg-icons";
