@@ -3,7 +3,7 @@
 import mainStyles from "./page.module.scss";
 import localStyles from "./demos.module.scss";
 import Image, { StaticImageData } from "next/image";
-import { Component, ReactNode, useState } from "react";
+import { Children, Component, Fragment, ReactNode, useState } from "react";
 import { styled } from 'styled-components';
 import { ScriptProps } from "next/dist/client/script";
 import pancakeImg from "/public/pictures/pexels-ash-122861-376464.jpg"
@@ -25,6 +25,42 @@ export function ContentProp(props: ScriptProps) {
 
 export interface IReactNode {
   children: ReactNode,
+}
+
+
+export function ModernFragmentComponent() {
+  return (
+    <>
+      <div>Element 1</div>
+      <div>Element 2</div>
+      <div>Element 3</div>
+    </>
+  );
+}
+
+interface IPropsToWrapElement {
+  title: string, 
+  children: any, //html something
+  props: ScriptProps
+}
+
+export function PropsToWrapElement({title, children, ...props}: IPropsToWrapElement) {
+  return (
+    <section {...props}>
+      <h2>{title}</h2>
+      {children}
+    </section>
+  )
+}
+
+export function FragmentComponent() {
+  return (
+    <Fragment>
+      <div>Element 1</div>
+      <div>Element 2</div>
+      <div>Element 3</div>
+    </Fragment>
+  );
 }
 
 export function ContentPropNode({children}: IReactNode) {
@@ -52,7 +88,7 @@ export function ListButton() {
     setValue(buttonId);
   };
 
-  const buttons = ["Components", "RXJS", "Props"];
+  const buttons = ["Components", "TSX", "Props"];
   return (
     <div>
       <menu>
@@ -72,6 +108,22 @@ export function ButtonChildElement({children, onClick}: IButton) {
     <li>
       <button onClick={onClick} type="button">{children}</button>
     </li>
+  );
+}
+
+export function DisplayIf(display: Boolean) {
+  return (
+    <div>
+      { display && (<p>Display if true</p>) }
+    </div>
+  );
+}
+
+export function DisplayConditional(display: Boolean) {
+  return (
+    <div>
+      { display ? (<p>Display if true</p>) : (<p>Display if false</p>) }
+    </div>
   );
 }
 
