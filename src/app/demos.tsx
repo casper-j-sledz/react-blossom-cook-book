@@ -3,7 +3,7 @@
 import mainStyles from "./page.module.scss";
 import localStyles from "./demos.module.scss";
 import Image, { StaticImageData } from "next/image";
-import { Component, ReactNode } from "react";
+import { Component, ReactNode, useState } from "react";
 import { styled } from 'styled-components';
 import { ScriptProps } from "next/dist/client/script";
 import pancakeImg from "/public/pictures/pexels-ash-122861-376464.jpg"
@@ -23,12 +23,56 @@ export function ContentProp(props: ScriptProps) {
   return <button type="button">{props.children}</button>
 }
 
-export interface PropNode {
+export interface IReactNode {
   children: ReactNode,
 }
 
-export function ContentPropNode({children}: PropNode) {
+export function ContentPropNode({children}: IReactNode) {
   return <button type="button">{children}</button>
+}
+
+export function ButtonOnClick({children}: IReactNode) {
+  const handleClick = () => console.log("ButtonOnClick");
+  return <button onClick={handleClick} type="button">{children}</button>
+}
+
+export interface IButton {
+  children: ReactNode,
+  onClick: (args: any) => void
+}
+
+export function ButtonOnClickPassedFromParent({children, onClick}: IButton) {
+  return <button onClick={onClick} type="button">{children}</button>
+}
+
+export function ListButton() {
+  const [ content, setValue ] = useState("Default content");
+  const handleClick = (buttonId: string) => {
+    console.log(buttonId);
+    setValue(buttonId);
+  };
+
+  const buttons = ["Components", "RXJS", "Props"];
+  return (
+    <div>
+      <menu>
+        { 
+          buttons.map((buttonText: string) => 
+            <ButtonChildElement key={buttonText} onClick={() => handleClick(buttonText)}>{buttonText}</ButtonChildElement>) 
+        }
+      </menu>
+      <div>{content}</div>
+    </div>
+  );
+}
+
+export function ButtonChildElement({children, onClick}: IButton) {
+  console.log(`Created button child element: ${children}`)
+  return (
+    <li>
+      <button onClick={onClick} type="button">{children}</button>
+    </li>
+  );
 }
 
 export interface IAnchor {
@@ -142,3 +186,4 @@ export class ClassAnchor extends Component<IAnchor> {
     );
   }
 }
+
