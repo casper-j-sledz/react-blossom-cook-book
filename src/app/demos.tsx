@@ -3,10 +3,9 @@
 import mainStyles from "./page.module.scss";
 import localStyles from "./demos.module.scss";
 import Image, { StaticImageData } from "next/image";
-import { Children, Component, Fragment, ReactNode, useState } from "react";
+import { Component, Fragment, ReactNode, useState } from "react";
 import { styled } from 'styled-components';
 import { ScriptProps } from "next/dist/client/script";
-import pancakeImg from "/public/pictures/pexels-ash-122861-376464.jpg"
 
 const StyledDiv = styled.a`
   padding: 5%;

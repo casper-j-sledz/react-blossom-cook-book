@@ -1,41 +1,12 @@
 "use client";
 
-import styles from "./page.module.scss";
-import Image, { StaticImageData } from "next/image";
 import './anchor-component.scss';
+import styles from "./page.module.scss";
+import Image from "next/image";
+import { IAnchor, IImage } from "./recipe-grid.component";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faBowlFood} from "@fortawesome/free-solid-svg-icons";
 //import { faBowlFood } from "@fortawesome/free-regular-svg-icons";
-import pancakeImg from "/public/pictures/pexels-ash-122861-376464.jpg"
-
-export interface IAnchor {
-  href: string, 
-  title: string, 
-  description: string,
-  image?: IImage,
-}
-
-export interface IImage {
-  src?: string | StaticImageData,
-  alt?: string,
-}
-
-export const anchors: IAnchor[] = [
-  {
-    href:        "https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
-    title:       "Pancake",
-    description: "Juicy pancakes in caramel glaze with seasonal fruits.",
-    image: { 
-      src: pancakeImg,
-      alt: "Next.js Logo",
-    }
-  },
-  {
-    href:        "https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app",
-    title:       "Example recipe",
-    description: "This is a description of example recipe. Yummy! Examples are most delicious.",
-  },
-];
 
 export function Anchor(props: IAnchor) {
   return (

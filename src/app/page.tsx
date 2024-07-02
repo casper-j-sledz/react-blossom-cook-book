@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import styles from "./page.module.scss";
-import { AddNewRecipeAnchor, Anchor, IAnchor, anchors } from "./anchor-component";
-import { Input } from "./input-component";
-import { ContentProb, DemoAnchor } from "./demos";
+import { DemoAnchor } from "./demos";
+import { RecipeGrid } from "./recipe-grid.component";
 
 // TODO: 
 // ustawienia, język polski, angielski
@@ -36,18 +35,7 @@ export default function Home() {
           </a>
         </div>
       </div>
-
-      <div className={styles.center}>
-          <Input />
-      </div>
-
-      <div className={styles.grid}>
-        {anchors.map((anchor: IAnchor) => <Anchor
-          key={anchor.title}
-          {...anchor} />
-        )}
-        <AddNewRecipeAnchor />
-      </div>
+      <RecipeGrid/>
       {/* <DemoAnchor/> */}
     </main>
   );
