@@ -37,6 +37,48 @@ export function ModernFragmentComponent() {
   );
 }
 
+export interface IMenu {
+  buttons: ReactNode,
+  children: ReactNode,
+}
+
+export function Menu({ buttons, children }: IMenu) {
+  return (
+    <>
+      <menu>{buttons}</menu>
+      {children}
+    </>
+  )
+}
+
+export function FullMenu() {
+  const [ content, setValue ] = useState("Default content");
+  const handleClick = (buttonId: string) => {
+    console.log(buttonId);
+    setValue(buttonId);
+  };
+
+  const buttonsText = ["Components", "TSX", "Props"];
+  const buttons = (
+    <div>
+      <menu>
+        { 
+          buttonsText.map((buttonText: string) => 
+            <ButtonChildElement key={buttonText} onClick={() => handleClick(buttonText)}>{buttonText}</ButtonChildElement>) 
+        }
+      </menu>
+      <div>{content}</div>
+    </div>
+  );
+
+  return (
+    <Menu buttons={buttons}>
+      <div>{content}</div>
+    </Menu>
+  )
+}
+
+
 interface IPropsToWrapElement {
   title: string, 
   children: any, //html something
